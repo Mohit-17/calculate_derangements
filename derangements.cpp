@@ -8,26 +8,26 @@ vector<string> total_derangements;
 // 1. String
 // 2. Starting index of the string
 // 3. Ending index of the string.
-int permute(string a, int l, int r,string original)
+int permute(string modified, int l, int r,string original)
 {
 	// Check for valid derangement
 	if (l == r){
         for(int i = 0;i < original.size();i++){
-            if(a[i] == original[i]){
+            if(modified[i] == original[i]){
                 flag = 1;     //if any letter is in their original position, abort
             }
         }
         if(!flag){
             int flag2 = 1;
             for(int k = 0;k < total_derangements.size();k++){
-                if(total_derangements[k] == a){
+                if(total_derangements[k] == modified){
                     flag2 = 0;    //if any derangement is already computed, abort(this can happen as repetition of letters are possible). 
 				  // eg -- original string => abbc   bacb will be computed twice. 
 				  // That's why we are checking if any derangement is already computed
                 }
             }
             if(flag2){
-                total_derangements.push_back(a);   
+                total_derangements.push_back(modified);   
                 derangements++;
             }
         }
@@ -40,13 +40,13 @@ int permute(string a, int l, int r,string original)
 		{
 
 			// Swapping done
-			swap(a[l], a[i]);
+			swap(modified[l], modified[i]);
 
 			// Recursion called
-			permute(a, l+1, r,original);
+			permute(modified, l+1, r,original);
 
 			//backtrack
-			swap(a[l], a[i]);
+			swap(modified[l], modified[i]);
 		}
 	}
     return derangements;
