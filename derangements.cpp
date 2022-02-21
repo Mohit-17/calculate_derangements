@@ -5,7 +5,7 @@ int flag = 0;
 vector<string> total_derangements;
 // Function to print derangements of string
 // This function takes three parameters:
-// 1. String.
+// 1. String that we will modify to compute all the derangements of given string.
 // 2. Starting index of the string.
 // 3. Ending index of the string.
 // 4. Original String.
