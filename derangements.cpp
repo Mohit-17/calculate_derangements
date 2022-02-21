@@ -2,15 +2,15 @@
 using namespace std;
 int derangements = 0;
 int flag = 0;
-vector<string> all_derangements;
-// Function to print permutations of string
+vector<string> repeated_derangements;
+// Function to print derangements of string
 // This function takes three parameters:
 // 1. String
 // 2. Starting index of the string
 // 3. Ending index of the string.
 int permute(string a, int l, int r,string original)
 {
-	// Base case
+	// Check for valud derangement
 	if (l == r){
         for(int i = 0;i < original.size();i++){
             if(a[i] == original[i]){
@@ -19,13 +19,13 @@ int permute(string a, int l, int r,string original)
         }
         if(!flag){
             int flag2 = 1;
-            for(int k = 0;k < all_derangements.size();k++){
+            for(int k = 0;k < repeated_derangements.size();k++){
                 if(all_derangements[k] == a){
                     flag2 = 0;
                 }
             }
             if(flag2){
-                all_derangements.push_back(a);
+                repeated_derangements.push_back(a);
                 derangements++;
             }
         }
@@ -50,15 +50,14 @@ int permute(string a, int l, int r,string original)
     return derangements;
 }
 
-// Driver Code
 int main()
 {
     string original, modified;
     cout<<"Enter string\n";
     cin>>original;
     modified = original;
-	derangements = permute(original, 0, original.size() - 1,original);
-	cout<<derangements;
+    derangements = permute(original, 0, original.size() - 1,original);
+    cout<<derangements;
     return 0;
 }
 
