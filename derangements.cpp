@@ -14,14 +14,16 @@ int permute(string a, int l, int r,string original)
 	if (l == r){
         for(int i = 0;i < original.size();i++){
             if(a[i] == original[i]){
-                flag = 1;
+                flag = 1;     //if any letter is in their original position, abort
             }
         }
         if(!flag){
             int flag2 = 1;
             for(int k = 0;k < repeated_derangements.size();k++){
                 if(repeated_derangements[k] == a){
-                    flag2 = 0;
+                    flag2 = 0;    //if any derangement is already computed, abort(this can happen as repetition of letters are possible). 
+				  // eg -- original string => abbc   bacb will be computed twice. 
+				  // That's why we are checking if any derangement is already computed
                 }
             }
             if(flag2){
