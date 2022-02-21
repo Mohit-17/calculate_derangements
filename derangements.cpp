@@ -20,7 +20,7 @@ int permute(string a, int l, int r,string original)
         if(!flag){
             int flag2 = 1;
             for(int k = 0;k < repeated_derangements.size();k++){
-                if(all_derangements[k] == a){
+                if(repeated_derangements[k] == a){
                     flag2 = 0;
                 }
             }
