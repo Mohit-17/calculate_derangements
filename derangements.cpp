@@ -2,7 +2,7 @@
 using namespace std;
 int derangements = 0;
 int flag = 0;
-vector<string> repeated_derangements;
+vector<string> total_derangements;
 // Function to print derangements of string
 // This function takes three parameters:
 // 1. String
@@ -10,7 +10,7 @@ vector<string> repeated_derangements;
 // 3. Ending index of the string.
 int permute(string a, int l, int r,string original)
 {
-	// Check for valud derangement
+	// Check for valid derangement
 	if (l == r){
         for(int i = 0;i < original.size();i++){
             if(a[i] == original[i]){
@@ -19,15 +19,15 @@ int permute(string a, int l, int r,string original)
         }
         if(!flag){
             int flag2 = 1;
-            for(int k = 0;k < repeated_derangements.size();k++){
-                if(repeated_derangements[k] == a){
+            for(int k = 0;k < total_derangements.size();k++){
+                if(total_derangements[k] == a){
                     flag2 = 0;    //if any derangement is already computed, abort(this can happen as repetition of letters are possible). 
 				  // eg -- original string => abbc   bacb will be computed twice. 
 				  // That's why we are checking if any derangement is already computed
                 }
             }
             if(flag2){
-                repeated_derangements.push_back(a);
+                total_derangements.push_back(a);   
                 derangements++;
             }
         }
