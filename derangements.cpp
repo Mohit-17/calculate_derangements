@@ -54,10 +54,9 @@ int permute(string a, int l, int r,string original)
 
 int main()
 {
-    string original, modified;
+    string original;
     cout<<"Enter string\n";
     cin>>original;
-    modified = original;
     derangements = permute(original, 0, original.size() - 1,original);
     cout<<derangements;
     return 0;
